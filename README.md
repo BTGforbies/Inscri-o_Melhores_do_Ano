@@ -1,15 +1,10 @@
 # Melhores do Ano — inscrições
 
-Front-end do evento, publicado pelo GitHub Pages a partir da branch `main` e da pasta raiz (`/`). Alterações em `index.html` são publicadas após cada commit na `main`.
+- [Inscrição pública](https://btgforbies.github.io/Inscri-o_Melhores_do_Ano/)
+- [Painel administrativo](https://btgforbies.github.io/Inscri-o_Melhores_do_Ano/admin.html)
 
-## Arquitetura
+O GitHub Pages publica o front automaticamente após commits na branch `main`. O banco online fica na API do Site em `https://gala-melhores-do-ano-2026-inscricoes.traco0061.chatgpt.site`.
 
-- `index.html`: interface original do evento, com chave PIX e WhatsApp configurados.
-- API de inscrições: `https://gala-melhores-do-ano-2026-inscricoes.traco0061.chatgpt.site/api/inscricoes`.
-- Banco online: Cloudflare D1 do Site, tabela `inscricoes`.
+O painel usa senha de administração armazenada como segredo no servidor. A senha não deve ser colocada neste repositório. Ele mostra totais de inscritos, permite buscar, editar nome e WhatsApp, marcar o pagamento como pendente, pago ou não pago e excluir inscrições. A exclusão remove o registro definitivamente.
 
-O GitHub Pages hospeda arquivos estáticos. O endpoint externo é necessário para gravar os cadastros. O comprovante é enviado pelo visitante no WhatsApp e a confirmação do pagamento é manual.
-
-## Publicação inicial
-
-Em **Settings → Pages**, escolha **Deploy from a branch**, branch **main**, pasta **/** (root), e salve. Depois disso, novos commits na `main` publicam o front automaticamente.
+O comprovante é enviado pelo participante no WhatsApp. Marque como pago somente após conferir o pagamento.
