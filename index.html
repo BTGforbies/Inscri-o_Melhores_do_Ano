@@ -72,12 +72,14 @@ form.addEventListener('submit', async (event) => {
     const result = await response.json();
     if (!response.ok) throw new Error(result.error || 'Não foi possível salvar a inscrição.');
     const message = [
-      'Olá! Fiz minha inscrição no Melhores do Ano.',
+      'Olá, acabei de fazer a minha inscrição no',
+      '*Melhores do Ano - Noite de Gala*',
+      '',
       'Nome: ' + name,
       'WhatsApp: ' + phone,
-      'Inscrição: ' + result.id,
       'Valor: R$ 15,00',
-      'Vou enviar o comprovante do Pix nesta conversa para confirmar minha inscrição.'
+      '',
+      'Vou enviar o comprovante do Pix nesta conversa para confirmar minha inscrição'
     ].join('\n');
     registrationStatus.textContent = 'Inscrição registrada. Abrindo o WhatsApp para enviar o comprovante...';
     window.location.href = 'https://wa.me/' + whatsapp + '?text=' + encodeURIComponent(message);
