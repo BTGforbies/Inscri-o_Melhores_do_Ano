@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'self' https://gala-melhores-do-ano-2026-inscricoes.traco0061.chatgpt.site; base-uri 'none'; form-action 'self'">
+  <title>Inscrições | Melhores do Ano</title>
+  <style>
+    :root{color-scheme:dark;--bg:#100a0a;--panel:#1b1110;--gold:#f0d19a;--text:#f6e8d4;--muted:#cbb9a7;--line:rgba(212,167,100,.25)}
+    *{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% 0%,#391411 0%,#1b0d0c 38%,var(--bg) 85%);color:var(--text);font:15px/1.5 system-ui,-apple-system,sans-serif}
+    [hidden]{display:none!important}button,input,select{font:inherit}button{cursor:pointer;border:1px solid #8a6641;border-radius:8px;padding:10px 14px;background:#261914;color:var(--gold)}button:hover{background:#38231a}button:disabled{opacity:.5;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+    input,select{width:100%;min-height:44px;border:1px solid #624637;border-radius:8px;padding:9px 12px;background:#100a09;color:#fff}label{display:block;margin:0 0 6px;font-size:13px;color:var(--muted)}h1,h2{font-family:Georgia,serif;font-weight:normal;color:var(--gold);line-height:1.15}h1{font-size:clamp(29px,5vw,43px);margin:4px 0 6px}h2{font-size:24px;margin:0 0 15px}p{color:var(--muted)}small{color:#b6a393}.eyebrow{letter-spacing:.18em;text-transform:uppercase;color:#d9b77c;font-size:11px}
+    .wrap{width:min(1180px,calc(100% - 32px));margin:0 auto;padding:34px 0 60px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 16px 45px #0003}.login{max-width:420px;margin:clamp(60px,14vh,150px) auto 0}.login label{margin-top:22px}.primary{background:linear-gradient(115deg,#c69753,#efd39a);color:#24160b;border:0;font-weight:700}.login .primary{width:100%;margin-top:16px}.feedback{min-height:22px;color:var(--gold);margin:12px 0 0;font-size:13px}.top{display:flex;justify-content:space-between;align-items:start;gap:20px;margin-bottom:26px}.top p{margin:0}.actions{display:flex;gap:8px;flex-wrap:wrap}.summary{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:22px}.stat{padding:18px 20px}.stat span{display:block;color:var(--muted);font-size:12px}.stat strong{display:block;font:32px/1.1 Georgia,serif;color:var(--gold);margin-top:6px}.filters{display:grid;grid-template-columns:minmax(200px,1fr) 180px auto;gap:12px;align-items:end;margin-bottom:16px}.filters button{min-height:44px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;min-width:760px}th,td{text-align:left;padding:12px 10px;border-bottom:1px solid var(--line);vertical-align:middle}th{color:#d9b77c;font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.07em}td{font-size:13px}td:first-child{font-weight:600}.badge{display:inline-block;border-radius:999px;padding:4px 9px;background:#3a291d;color:#f0d19a;white-space:nowrap}.badge.pago{background:#173b2b;color:#9ee5b6}.badge.nao_pago{background:#4a1e20;color:#f3aeb1}.row-actions{display:flex;gap:6px}.row-actions button{padding:7px 9px;font-size:12px;white-space:nowrap}.danger{border-color:#985456;color:#f3aeb1}.pager{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:16px}.pager span{font-size:13px;color:var(--muted)}.pager-buttons{display:flex;gap:8px}dialog{border:1px solid var(--line);border-radius:16px;background:var(--panel);color:var(--text);width:min(440px,calc(100% - 24px));padding:24px;box-shadow:0 24px 80px #000a}dialog::backdrop{background:#000a}dialog label{margin-top:14px}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:22px}.empty{text-align:center;color:var(--muted);padding:32px 12px}
+    @media(max-width:760px){.wrap{padding-top:22px}.top{flex-direction:column}.summary{grid-template-columns:repeat(2,minmax(0,1fr))}.filters{grid-template-columns:1fr 1fr}.filters>div:first-child{grid-column:1/-1}.filters button{grid-column:1/-1}.panel{padding:18px}}
+    @media(max-width:390px){.summary{gap:8px}.stat{padding:14px}.stat strong{font-size:27px}.pager{align-items:start;flex-direction:column}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section id="login" class="panel login" hidden>
+      <div class="eyebrow">Melhores do Ano</div>
+      <h1>Painel de inscrições</h1>
+      <p>Acesso reservado à organização do evento.</p>
+      <form id="login-form">
+        <label for="password">Senha de administração</label>
+        <input id="password" type="password" autocomplete="current-password" required>
+        <button class="primary" type="submit">Entrar</button>
+      </form>
+      <p class="feedback" id="login-feedback" role="status"></p>
+    </section>
+
+    <section id="dashboard" hidden>
+      <header class="top">
+        <div><div class="eyebrow">Melhores do Ano · administração</div><h1>Inscrições</h1><p>Controle de presença e pagamentos</p></div>
+        <div class="actions"><button id="refresh" type="button">Atualizar</button><button id="logout" type="button">Sair</button></div>
+      </header>
+      <div class="summary" aria-label="Resumo de inscrições">
+        <div class="panel stat"><span>Total de inscritos</span><strong id="total">0</strong></div>
+        <div class="panel stat"><span>Pagos</span><strong id="paid">0</strong></div>
+        <div class="panel stat"><span>Pendentes</span><strong id="pending">0</strong></div>
+        <div class="panel stat"><span>Não pagos</span><strong id="unpaid">0</strong></div>
+      </div>
+      <section class="panel">
+        <div class="filters">
+          <div><label for="search">Buscar por nome ou WhatsApp</label><input id="search" type="search" placeholder="Digite para buscar"></div>
+          <div><label for="status-filter">Situação</label><select id="status-filter"><option value="">Todas</option><option value="aguardando_comprovante">Pendente</option><option value="pago">Pago</option><option value="nao_pago">Não pago</option></select></div>
+          <button id="clear-filters" type="button">Limpar filtros</button>
+        </div>
+        <div class="table-wrap"><table><thead><tr><th>Nome</th><th>WhatsApp</th><th>Inscrição</th><th>Valor</th><th>Situação</th><th>Ações</th></tr></thead><tbody id="rows"></tbody></table></div>
+        <p class="empty" id="empty" hidden>Nenhuma inscrição encontrada.</p>
+        <p class="feedback" id="dashboard-feedback" role="status"></p>
+        <div class="pager"><span id="page-info"></span><div class="pager-buttons"><button id="prev" type="button">Anterior</button><button id="next" type="button">Próxima</button></div></div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="edit-dialog">
+    <form id="edit-form">
+      <h2>Editar inscrição</h2>
+      <label for="edit-name">Nome completo</label><input id="edit-name" required maxlength="120">
+      <label for="edit-phone">WhatsApp</label><input id="edit-phone" type="tel" required>
+      <label for="edit-status">Situação do pagamento</label><select id="edit-status"><option value="aguardando_comprovante">Pendente</option><option value="pago">Pago</option><option value="nao_pago">Não pago</option></select>
+      <p class="feedback" id="edit-feedback" role="status"></p>
+      <div class="dialog-actions"><button id="cancel-edit" type="button">Cancelar</button><button class="primary" type="submit">Salvar</button></div>
+    </form>
+  </dialog>
+
+  <script>window.GALA_ADMIN_API="https://gala-melhores-do-ano-2026-inscricoes.traco0061.chatgpt.site";</script><script>
+    const $ = (selector) => document.querySelector(selector);
+    const apiOrigin = String(window.GALA_ADMIN_API || '').replace(/\/$/, '');
+    const labels = {aguardando_comprovante:'Pendente',pago:'Pago',nao_pago:'Não pago'};
+    const dateFormat = new Intl.DateTimeFormat('pt-BR',{dateStyle:'short',timeStyle:'short',timeZone:'America/Sao_Paulo'});
+    let currentPage = 0;
+    let currentRows = [];
+    let editingId = null;
+    let sessionToken = null;
+    let searchTimer;
+
+    async function api(path, options = {}) {
+      const headers = {...(options.headers || {})};
+      if (sessionToken) headers.Authorization = 'Bearer ' + sessionToken;
+      const response = await fetch(apiOrigin + path,{credentials:apiOrigin ? 'omit' : 'same-origin',cache:'no-store',...options,headers});
+      const data = await response.json().catch(() => ({}));
+      if (response.status === 401 && path !== '/api/admin/login') {
+        sessionToken = null;
+        $('#dashboard').hidden = true;
+        $('#login').hidden = false;
+        throw new Error('Entre com a senha de administração.');
+      }
+      if (!response.ok) throw new Error(data.error || 'Não foi possível concluir a operação.');
+      return data;
+    }
+    function cell(row, value) {
+      const td = document.createElement('td');
+      td.textContent = value;
+      row.append(td);
+      return td;
+    }
+    function render(data) {
+      $('#total').textContent = data.summary.total;
+      $('#paid').textContent = data.summary.pagos;
+      $('#pending').textContent = data.summary.pendentes;
+      $('#unpaid').textContent = data.summary.naoPagos;
+      currentRows = data.rows;
+      const body = $('#rows');
+      body.replaceChildren();
+      for (const person of data.rows) {
+        const tr = document.createElement('tr');
+        cell(tr,person.nome);
+        cell(tr,person.whatsapp);
+        cell(tr,dateFormat.format(new Date(person.criado_em)));
+        cell(tr,new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL'}).format(person.valor_centavos/100));
+        const statusCell = document.createElement('td');
+        const badge = document.createElement('span');
+        badge.className = 'badge ' + person.status_comprovante;
+        badge.textContent = labels[person.status_comprovante] || person.status_comprovante;
+        statusCell.append(badge);tr.append(statusCell);
+        const actions = document.createElement('td');
+        actions.className = 'row-actions';
+        const edit = document.createElement('button');edit.type='button';edit.textContent='Editar';edit.addEventListener('click',()=>openEdit(person));
+        const remove = document.createElement('button');remove.type='button';remove.className='danger';remove.textContent='Excluir';remove.addEventListener('click',()=>removePerson(person));
+        actions.append(edit,remove);tr.append(actions);body.append(tr);
+      }
+      $('#empty').hidden = data.rows.length !== 0;
+      const start = data.matched ? data.page*data.pageSize+1 : 0;
+      const end = Math.min(data.matched,(data.page+1)*data.pageSize);
+      $('#page-info').textContent = `${start}–${end} de ${data.matched} resultados`;
+      $('#prev').disabled = data.page === 0;
+      $('#next').disabled = end >= data.matched;
+      $('#dashboard').hidden = false;
+      $('#login').hidden = true;
+    }
+    async function load() {
+      $('#dashboard-feedback').textContent = '';
+      const query = new URLSearchParams({page:String(currentPage),q:$('#search').value.trim(),status:$('#status-filter').value});
+      try { render(await api('/api/admin/inscricoes?'+query)); }
+      catch (error) { if (!$('#dashboard').hidden) $('#dashboard-feedback').textContent = error.message; }
+    }
+    function openEdit(person) {
+      editingId = person.id;
+      $('#edit-name').value = person.nome;
+      $('#edit-phone').value = person.whatsapp;
+      $('#edit-status').value = person.status_comprovante;
+      $('#edit-feedback').textContent = '';
+      $('#edit-dialog').showModal();
+    }
+    async function removePerson(person) {
+      if (!confirm(`Excluir definitivamente a inscrição de ${person.nome}?`)) return;
+      try {
+        await api('/api/admin/inscricoes/'+encodeURIComponent(person.id),{method:'DELETE'});
+        if (currentRows.length === 1 && currentPage > 0) currentPage--;
+        await load();
+      } catch (error) { $('#dashboard-feedback').textContent = error.message; }
+    }
+    $('#login-form').addEventListener('submit',async (event)=>{
+      event.preventDefault();$('#login-feedback').textContent = '';
+      const button = $('#login-form button');button.disabled = true;
+      try {
+        const login = await api('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({password:$('#password').value})});
+        sessionToken = login.token;
+        $('#password').value = '';await load();
+      } catch (error) { $('#login-feedback').textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+    $('#edit-form').addEventListener('submit',async (event)=>{
+      event.preventDefault();$('#edit-feedback').textContent = '';
+      const button = $('#edit-form .primary');button.disabled = true;
+      try {
+        await api('/api/admin/inscricoes/'+encodeURIComponent(editingId),{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:$('#edit-name').value,phone:$('#edit-phone').value,status:$('#edit-status').value})});
+        $('#edit-dialog').close();await load();
+      } catch (error) { $('#edit-feedback').textContent = error.message; }
+      finally { button.disabled = false; }
+    });
+    $('#cancel-edit').addEventListener('click',()=>$('#edit-dialog').close());
+    $('#refresh').addEventListener('click',load);
+    $('#logout').addEventListener('click',async()=>{try{if (!apiOrigin) await api('/api/admin/logout',{method:'POST'});sessionToken=null;$('#dashboard').hidden=true;$('#login').hidden=false;}catch(error){$('#dashboard-feedback').textContent=error.message;}});
+    $('#prev').addEventListener('click',()=>{if(currentPage>0){currentPage--;load();}});
+    $('#next').addEventListener('click',()=>{currentPage++;load();});
+    $('#search').addEventListener('input',()=>{clearTimeout(searchTimer);searchTimer=setTimeout(()=>{currentPage=0;load();},250);});
+    $('#status-filter').addEventListener('change',()=>{currentPage=0;load();});
+    $('#clear-filters').addEventListener('click',()=>{$('#search').value='';$('#status-filter').value='';currentPage=0;load();});
+    load();
+  </script>
+</body>
+</html>
