@@ -56,8 +56,10 @@ form.addEventListener('submit', async (event) => {
   if (!pix || !whatsapp) return;
   const name = document.querySelector('#name').value.trim().replace(/\s+/g, ' ');
   const phone = document.querySelector('#phone').value.trim();
-  if (name.length < 3 || name.length > 120 || phone.replace(/\D/g, '').length < 10 || phone.replace(/\D/g, '').length > 13) {
-    registrationStatus.textContent = 'Confira seu nome e WhatsApp antes de continuar.';
+  const digits = phone.replace(/\D/g, '');
+  const mobile = digits.length === 13 && digits.startsWith('55') ? digits.slice(2) : digits;
+  if (name.length < 3 || name.length > 120 || !/^[1-9]{2}9\d{8}$/.test(mobile)) {
+    registrationStatus.textContent = 'Confira seu nome e informe um celular com DDD válido.';
     return;
   }
   submitButton.disabled = true;

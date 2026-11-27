@@ -8,3 +8,5 @@ O GitHub Pages publica o front automaticamente após commits na branch `main`. O
 O painel usa senha de administração armazenada como segredo no servidor. A senha não deve ser colocada neste repositório. Ele mostra totais de inscritos, permite buscar, editar nome e WhatsApp, marcar o pagamento como pendente, pago ou não pago e excluir inscrições. A exclusão remove o registro definitivamente.
 
 O comprovante é enviado pelo participante no WhatsApp. Marque como pago somente após conferir o pagamento.
+
+O formulário valida um celular brasileiro com DDD e mostra uma mensagem quando ele já está inscrito. A regra definitiva depende do índice único no banco e do Worker em `gala-inscricoes`; um commit apenas neste repositório publica o front, mas não altera a API.
